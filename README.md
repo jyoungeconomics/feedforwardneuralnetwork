@@ -3,7 +3,7 @@ Simple Feedforward Neural Network with h-hidden layers
 
 R code found in "feedforward.R"
 
-#This is for binary data in both inputs (e.g., which switches are flipped on) and outputs (e.g., whether a machine is running).
+This is for binary data in both inputs (e.g., which switches are flipped on) and outputs (e.g., whether a machine is running).
 
 I have created 4 activation/smooshing functions, 3 of which have their derivative included (the 4th is almost exclusively used at the 
 output layer(s) in practice, and therefore is never derived).
