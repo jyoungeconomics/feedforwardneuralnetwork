@@ -1,6 +1,7 @@
 # feedforwardneuralnetwork
 Simple Feedforward Neural Network with h-hidden layers
 
+\sum(i=1 to n)
 
 R code found in "feedforward.R"
 This is for binary data in both inputs (e.g., which switches are flipped on) and outputs (e.g., whether a machine is running).
@@ -14,6 +15,9 @@ One thing to note is that the output layer is activated linearly, but an activat
 Enjoy! Feel free to comment, improve, or try on other data.
 
 Current projects: 
+
 (i) building a way to optimize the hyperparamters (e.g. the learning rate); 
+
 (ii) building a graphing tool to visualize the network in its final form; 
+
 (iii) refining the program to do a network on continuous data;
