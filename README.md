@@ -21,3 +21,7 @@ Current projects:
 (ii) building a graphing tool to visualize the network in its final form; 
 
 (iii) refining the program to do a network on continuous data;
+
+
+*UPDATE, 11/09/2017*
+Momentum term added to weight updates at the end of the loop. This helps guard against overshooting the minimum of the error function.
