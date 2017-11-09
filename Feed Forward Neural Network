@@ -66,12 +66,14 @@ W[[H]] <- matrix(runif((ncol(W[[H-1]])+1)*(1)),nrow=ncol(W[[H-1]])+1,ncol=q[H])
 #ReLu can BLOW UP activations if you have too large a learning rate
 #but at least you avoid the vanishing gradient common to TANH(X) and SIG(X)
 learn <- 0.001
+momentum <- 0.5
 errors <- list()
 gradients <- list()
 layers <- list()
 descent <- list()
 #number of epochs for training
 EEP <- 100000
+WW <- list()
 #train that mess
 for (i in 1:EEP){
 
@@ -98,9 +100,17 @@ for (i in 1:EEP){
     errors[[j]] <- gradients[[j-1]]%*%t(W[[length(layers)-j+1]][-1,])
     gradients[[j]] <- errors[[j]]*(activate(layers[[length(layers)-(j-1)]],dx=T))
   }
+  #calculate the weight change from previous i, for using momentum
+  for (g in 1:H){
+    if(i==1)
+    #if true, add no change in W (it is the first epoch, nothing has changed)
+    #make sure same dimensions as W without the bias
+      WW[[g]] <- 0*W[[g]][-1,] else WW[[g]] <- ((t(layers[[g]])%*%gradients[[(length(1:H)+1)-g]])*learn+WW[[g]]*momentum)
+  }
 #update weights using the estimated gradient
   for (m in 1:(H)){
-    W[[m]][-1,] <- W[[m]][-1,]+(t(layers[[m]])%*%gradients[[(length(1:H)+1)-m]])*learn
+    #the m_th weight matrix exluding bias#    #change to W scaled by learning rate#    #previous change to W scaled by momentum#
+    W[[m]][-1,] <- W[[m]][-1,]+(t(layers[[m]])%*%gradients[[(length(1:H)+1)-m]])*learn+WW[[m]]*momentum
   }
 }
 
