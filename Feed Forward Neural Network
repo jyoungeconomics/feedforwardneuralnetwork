@@ -3,19 +3,19 @@
 
 sigmoid <- function(x,dx){
   if(dx==FALSE)
-    joo <- (1/(1+exp(-x))) else joo <- (1/(1+exp(-x)))*(1-(1/(1+exp(-x))))
-    return(joo)
+    temp <- (1/(1+exp(-x))) else temp <- (1/(1+exp(-x)))*(1-(1/(1+exp(-x))))
+    return(temp)
 }
 tootoo <- function(x,dx){
   if(dx==FALSE)
-    joo <- (tanh(x)) else joo <- (1/(cosh(x))^2)
-    return(joo)
+    temp <- (tanh(x)) else temp <- (1/(cosh(x))^2)
+    return(temp)
 }
 #actually leaky ReLu since 0.01 is not 0.00
 relu <- function(x,dx){
   if(dx==FALSE)
-    joo <- (x<=0)*(0.01*x)+(x>0)*(x) else joo <- (x<=0)*(0.01)+(x>0)*(1)
-    return(joo)
+    temp <- (x<=0)*(0.01*x)+(x>0)*(x) else temp <- (x<=0)*(0.01)+(x>0)*(1)
+    return(temp)
 }
 #Siraj says in https://www.youtube.com/watch?v=-7scQpJT7uo
 #to use ReLu for hidden layers and use SOFTMAX for output for classifications
